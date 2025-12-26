@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,23 +17,23 @@
 
 html, body {
     width: 100%;
-    height: 100%;
-    overflow: hidden; /* 🚫 No scroll */
+    min-height: 100%;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     background: radial-gradient(1200px at top right, #1e293b, #020617);
     color: #e5e7eb;
+    overflow-y: auto; /* ✅ ENABLE SCROLL */
 }
 
 /* ===============================
-   LAYOUT
+   HERO SECTION
 ================================ */
 .page {
-    height: 100vh;
-    width: 100vw;
+    min-height: 100vh;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 40px;
+    padding: 80px 40px;
 }
 
 .container {
@@ -87,6 +86,7 @@ p {
 .actions {
     display: flex;
     gap: 16px;
+    flex-wrap: wrap;
 }
 
 .btn {
@@ -153,16 +153,48 @@ li::before {
 }
 
 /* ===============================
+   DOCUMENTATION SECTION
+================================ */
+.docs {
+    width: 100%;
+    margin: auto;
+    padding: 80px 40px;
+    border: 1px solid #323232;
+    max-width: 1200px;
+}
+
+.docs h2 {
+    font-size: 32px;
+    color: #38bdf8;
+    margin-bottom: 16px;
+}
+
+.docs h3 {
+    font-size: 22px;
+    color: #93c5fd;
+    margin-top: 40px;
+    margin-bottom: 10px;
+}
+
+.docs p {
+    color: #cbd5f5;
+    line-height: 1.7;
+    margin-bottom: 16px;
+}
+
+.docs ul {
+    margin-left: 10px;
+}
+
+/* ===============================
    FOOTER
 ================================ */
 .footer {
-    position: absolute;
-    bottom: 16px;
-    left: 0;
-    right: 0;
     text-align: center;
+    padding: 30px 20px;
     font-size: 13px;
     color: #64748b;
+    border-top: 1px solid rgba(255,255,255,0.08);
 }
 
 /* ===============================
@@ -179,18 +211,26 @@ li::before {
     }
 
     .page {
-        padding: 24px;
+        padding: 60px 24px;
+    }
+
+    .docs {
+        padding: 60px 24px;
     }
 }
+hr {
+    margin: 42px 0;
+}
+
 </style>
 </head>
 
 <body>
 
+<!-- HERO -->
 <div class="page">
     <div class="container">
 
-        <!-- LEFT -->
         <div>
             <div class="badge">WordPress Plugin</div>
 
@@ -206,16 +246,13 @@ li::before {
             </p>
 
             <div class="actions">
-                <a href="https://github.com/YOUR_USERNAME/YOUR_REPO" class="btn btn-primary">
-                    View on GitHub
-                </a>
-                <a href="#features" class="btn btn-secondary">
-                    Plugin Features
+               
+                <a href="#documentation" class="btn btn-secondary">
+                    Documentation
                 </a>
             </div>
         </div>
 
-        <!-- RIGHT -->
         <div class="card">
             <h3>Key Features</h3>
             <ul>
@@ -231,8 +268,271 @@ li::before {
     </div>
 </div>
 
+<!-- DOCUMENTATION -->
+<div id="documentation" class="docs">
+    <h2>Overview</h2>
+<p>
+AI Content + SEO Assistant (AICSA) is a professional WordPress plugin designed to help
+website owners, marketers, and developers generate high-quality, SEO-optimized content
+directly inside the WordPress editor and popular page builders.
+</p>
+
+<p>
+The plugin integrates with multiple AI providers and focuses on clean output,
+search-engine friendly structure, and editorial control.
+</p>
+
+<hr>
+
+<h2>System Requirements</h2>
+<ul>
+    <li>WordPress 5.8 or higher</li>
+    <li>PHP 7.4 or higher (PHP 8.x supported)</li>
+    <li>HTTPS enabled (required for API calls)</li>
+    <li>One or more supported AI providers (optional)</li>
+</ul>
+
+<hr>
+
+<h2>Supported Editors & Builders</h2>
+<ul>
+    <li>Gutenberg (Block Editor)</li>
+    <li>Classic Editor</li>
+    <li>Elementor</li>
+    <li>Beaver Builder</li>
+    <li>WPBakery (Visual Composer)</li>
+</ul>
+
+<hr>
+
+<h2>Installation</h2>
+
+<h3>Step 1: Upload Plugin</h3>
+<ul>
+    <li>Go to <strong>WordPress Admin → Plugins → Add New</strong></li>
+    <li>Click <strong>Upload Plugin</strong></li>
+    <li>Select the plugin ZIP file</li>
+    <li>Click <strong>Install Now</strong> and then <strong>Activate</strong></li>
+</ul>
+
+<h3>Step 2: Verify Installation</h3>
+<p>
+After activation, you will see a new menu item:
+<strong>AI Content SEO Assistant</strong> in the WordPress admin sidebar.
+</p>
+
+<hr>
+
+<h2>Initial Configuration</h2>
+
+<h3>Global Settings</h3>
+<p>
+Navigate to:
+<strong>AI Content SEO Assistant → Settings</strong>
+</p>
+
+<ul>
+    <li>Select your active AI provider</li>
+    <li>Set maximum token / word limits</li>
+    <li>Choose enabled post types</li>
+</ul>
+
+<h3>API Keys</h3>
+<p>
+The plugin does not include built-in API keys.
+You must provide your own keys for supported providers.
+</p>
+
+<ul>
+    <li>OpenAI API Key</li>
+    <li>Google Gemini API Key</li>
+    <li>Groq API Key</li>
+</ul>
+
+<p>
+API keys are stored securely using WordPress options and are never shared externally.
+</p>
+
+<hr>
+
+<h2>Using the Plugin</h2>
+
+<h3>Classic Editor</h3>
+<p>
+When editing a post or page, you will see the
+<strong>AI Content SEO Assistant</strong> metabox in the sidebar.
+</p>
+
+<ul>
+    <li>Enter your content prompt</li>
+    <li>Select content action (Write, Rewrite, Improve, etc.)</li>
+    <li>Click <strong>Generate</strong></li>
+    <li>Content is inserted directly into the editor</li>
+</ul>
+
+<h3>Gutenberg (Block Editor)</h3>
+<p>
+In Gutenberg, the plugin integrates via a sidebar panel.
+</p>
+
+<ul>
+    <li>Select a text block</li>
+    <li>Open the AI assistant panel</li>
+    <li>Generate or rewrite content</li>
+</ul>
+
+<h3>Elementor</h3>
+<p>
+The plugin provides a dedicated Elementor widget.
+</p>
+
+<ul>
+    <li>Add the <strong>AI Content Writer</strong> widget</li>
+    <li>Enter your prompt</li>
+    <li>Generate content inside Elementor</li>
+</ul>
+
+<h3>Beaver Builder & WPBakery</h3>
+<p>
+For visual builders, the plugin detects active editor mode and injects
+content safely without breaking layouts.
+</p>
+
+<hr>
+
+<h2>SEO-Focused Content Generation</h2>
+
+<h3>How AICSA Helps SEO</h3>
+<ul>
+    <li>Semantic keyword structure</li>
+    <li>Proper heading hierarchy (H1–H6)</li>
+    <li>Readable paragraph length</li>
+    <li>Natural keyword placement</li>
+    <li>Human-like tone (not spammy)</li>
+</ul>
+
+<h3>Best Practices for SEO</h3>
+<ul>
+    <li>Always include a clear topic in your prompt</li>
+    <li>Specify target keywords explicitly</li>
+    <li>Use “SEO-friendly” or “search optimized” in prompts</li>
+    <li>Generate section-by-section for long articles</li>
+</ul>
+
+<h3>Example SEO Prompt</h3>
+<pre>
+Write a 1200-word SEO-optimized article about "On-Page SEO for WordPress".
+Use H2 and H3 headings, short paragraphs, and a professional tone.
+</pre>
+
+<hr>
+
+<h2>Word Limit & Formatting Control</h2>
+
+<p>
+AICSA allows precise control over output length.
+</p>
+
+<ul>
+    <li>Maximum word limits enforced</li>
+    <li>Automatic trimming if provider exceeds limit</li>
+    <li>Formatting preserved (lists, headings, paragraphs)</li>
+</ul>
+
+<hr>
+
+<h2>Analytics & Usage Monitoring</h2>
+
+<p>
+The Analytics tab displays usage statistics using Chart.js.
+</p>
+
+<ul>
+    <li>Requests per provider</li>
+    <li>Token usage overview</li>
+    <li>No personal data collected</li>
+</ul>
+
+<p>
+Charts are rendered locally in the admin dashboard.
+</p>
+
+<hr>
+
+<h2>Security & Privacy</h2>
+
+<ul>
+    <li>Nonce-protected AJAX requests</li>
+    <li>Sanitized inputs and outputs</li>
+    <li>No front-end data exposure</li>
+    <li>No tracking or telemetry</li>
+</ul>
+
+<hr>
+
+<h2>External Services Disclosure</h2>
+
+<ul>
+    <li>OpenAI API (optional)</li>
+    <li>Google Gemini API (optional)</li>
+    <li>Groq API (optional)</li>
+    <li>Chart.js (CDN for admin charts)</li>
+</ul>
+
+<p>
+The plugin author is not affiliated with these services.
+</p>
+
+<hr>
+
+<h2>Troubleshooting</h2>
+
+<h3>Content Not Generating</h3>
+<ul>
+    <li>Check API key validity</li>
+    <li>Verify active provider selection</li>
+    <li>Ensure HTTPS is enabled</li>
+</ul>
+
+<h3>Editor Not Detected</h3>
+<ul>
+    <li>Reload the editor</li>
+    <li>Ensure supported builder is active</li>
+</ul>
+
+<hr>
+
+<h2>Developer Notes</h2>
+
+<ul>
+    <li>Clean OOP architecture</li>
+    <li>WordPress coding standards followed</li>
+    <li>Translation-ready (.pot supported)</li>
+    <li>Envato & WordPress.org compliant</li>
+</ul>
+
+<hr>
+
+<h2>Support</h2>
+
+<p>
+For documentation, updates, and support, visit:
+</p>
+
+<ul>
+    <li><a href="https://vscodelab-ai.github.io" target="_blank">VSCodeLab </a></li>
+</ul>
+
+<p>
+Thank you for using AI Content + SEO Assistant.
+</p>
+
+
+    <!-- You can now append your LONG SEO documentation here -->
+</div>
+
 <div class="footer">
-    © 2025 AI Content SEO Assistant (AICSA) · Open-source WordPress plugin
+    © 2025 VS CodeLab
 </div>
 
 </body>
